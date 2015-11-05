@@ -37,7 +37,7 @@ def pig_latinify(word):
     elif not word.isalpha():
         raise ValueError
     elif not word.islower():
-        raise ValueError
+        raise ValueError 
 
     letters = word.split()
     count = 0
