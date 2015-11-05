@@ -17,22 +17,19 @@ def find(input_string, substring, start, end):
     Describe your function
 
     :param : input_string (string)
-    :return: match_start(int)
+    :return:
     :raises:
 
     """
-search_area = input_string[start:end]
-i = 0
+    search_area = input_string[start:end]
 
-match_start = -1
+    i = start
 
-while 1 < len(search_area)-(len(substring)-1):
-    letter = search_area(i)
-    if letter == substring[0]:
-        j = i + 1
-        k = 1
-while k < len(substring):
 
+    while i < len(search_area):
+        if search_area[i:i+len(substring)] == substring:
+            return i
+        i += 1
 
 
     return -1
@@ -40,6 +37,11 @@ while k < len(substring):
 
 def multi_find(input_string, substring, start, end):
     """
+    call find function from above
+    input input_string, substring, start, and end as given in multi_find
+    store returned values in the result string
+    if find function does not find substring, then return the empty string
+    otherwise the indices of substring occurances are returned in the result string
     Describe your function
 
     :param :
@@ -47,7 +49,19 @@ def multi_find(input_string, substring, start, end):
     :raises:
 
     """
+
+
     result = ""
+
+    i = start
+
+
+    while i < len(input_string):
+
+        i = find(input_string, substring, start, end)
+        if i > 0:
+            result = result.append[i]
+
 
     return result
 
