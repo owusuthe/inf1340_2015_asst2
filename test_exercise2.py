@@ -22,3 +22,4 @@ def test_multi_find_basic():
     Test multi_find function.
     """
     assert multi_find("Ni! Ni! Ni! Ni!", "Ni", 0, 20) == "0,4,8,12"
+

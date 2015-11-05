@@ -21,13 +21,13 @@ def find(input_string, substring, start, end):
     :raises:
 
     """
-    search_area = input_string[start:end]
+    #search_area = input_string[start:end]
 
     i = start
 
 
-    while i < len(search_area):
-        if search_area[i:i+len(substring)] == substring:
+    while i < len(input_string):
+        if input_string[i:i+len(substring)] == substring:
             return i
         i += 1
 
@@ -50,18 +50,17 @@ def multi_find(input_string, substring, start, end):
 
     """
 
-
     result = ""
 
     i = start
 
-
     while i < len(input_string):
 
-        i = find(input_string, substring, start, end)
-        if i > 0:
-            result = result.append[i]
-
+        i = find(input_string, substring, i, end)
+        if i >= 0:
+            result += str(i) + ","
+            i += 1
+        else:
+            return result[0: len(result)-1]
 
     return result
-
