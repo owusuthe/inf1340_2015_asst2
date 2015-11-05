@@ -19,9 +19,34 @@ def test_basic():
     """
     Basic test cases from assignment hand out
     """
+
     assert pig_latinify("dog") == "ogday"
     assert pig_latinify("scratch") == "atchscray"
     assert pig_latinify("is") == "isyay"
     assert pig_latinify("apple") == "appleyay"
+
+def test_unexpected_word():
+    try:
+        pig_latinify(3)
+    except ValueError:
+        assert True
+    else:
+        assert False
+
+def test_multiple_word():
+    try:
+        pig_latinify("apple happy")
+    except ValueError:
+        assert True
+    else:
+        assert False
+
+def test_capitalize_word():
+    try:
+        pig_latinify("Happy")
+    except ValueError:
+        assert True
+    else:
+        assert False
 
 

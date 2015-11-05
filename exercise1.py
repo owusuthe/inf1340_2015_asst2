@@ -12,54 +12,46 @@ __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
 
 
-def pig_latinify(word):
-    """
-    #For a given word in english, returns the word in pig latin
+
+"""
+    #For a given English word, returns the word in Pig Latin form
 
     :param : word
-    :return: new_word + 'ay' or new_word + 'yay'
+    :return: word + 'ay' or word + 'yay'
     :raises: except TypeError
 
-    """
-word = ""
-#vowels = ('a', 'e', 'i', 'o', 'u')
-#consonants = ('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z')
-vowels = ("aeiou")
-consonants = ("bcdfghjklmnpqrstvwxyz")
 """
-def pig_latinify(word):
-    append_yay = "yay"
-    append_ay = "ay"
-    if word[0] in vowels:
-        return word + append_yay
-    elif word[0] in consonants:
-        return word.lstrip("bcdfghjklmnpqrstvwxyz" ) + append_ay
-    else:
-        print "Enter a new word"
-
-print pig_latinify("branch")
+vowels = ("a", "e", "i", "o", "u", "A", "E", "I", "O", "U")
 
 
-    #result = ""
+def identify_vowel(word): #identify vowel in the english word
 
-    #return result
-"""
-
-word = ""
-#vowels = ('a', 'e', 'i', 'o', 'u')
-#consonants = ('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z')
-vowels = ("aeiou")
-consonants = ("bcdfghjklmnpqrstvwxyz")
+    for i in range(len(word)):
+        if word[i] in vowels:
+            return i
 
 def pig_latinify(word):
-    append_yay = "yay"
-    append_ay = "ay"
-    consonants_removed = word.lstrip(consonants)
-    if word[0] in vowels:
-        return word + append_yay
-    elif word[0] in consonants:
-        return consonants_removed + append_ay
-    else:
-        print "Enter a new word"
-        
-print pig_latinify("scratch")
+
+    if type(word) != str:
+        raise ValueError
+    elif not word.isalpha():
+        raise ValueError
+    elif not word.islower():
+        raise ValueError 
+
+    letters = word.split()
+    count = 0
+    result = ""
+
+    for word in letters:
+        vowel = identify_vowel(word)
+        if vowel == -1: #first letter isn't a vowel
+            result = word
+        elif vowel == 0: #first letter is vowel
+            result = word + "yay"
+        else:#first letter is consonant
+            result = word[vowel:] + word[:vowel] + "ay"
+
+    return result
+
+
