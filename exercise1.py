@@ -26,37 +26,30 @@ vowels = ("a", "e", "i", "o", "u", "A", "E", "I", "O", "U")
 
 def identify_vowel(word): #identify vowel in the english word
 
-    for i in range (len(word)):
+    for i in range(len(word)):
         if word[i] in vowels:
             return i
 
 def pig_latinify(word):
 
+    if word == type(int):
+        raise TypeError('Invalid word')
+
     letters = word.split()
     count = 0
-    word = ""
+    result = ""
 
     for word in letters:
         vowel = identify_vowel(word)
         if vowel == -1: #first letter isn't a vowel
-            print word
+            result = word
         elif vowel == 0: #first letter is vowel
-            print word + "ay"
+            result = word + "yay"
         else:#first letter is consonant
-            print word[vowel:] + word[:vowel] + "ay"
+            result = word[vowel:] + word[:vowel] + "ay"
 
-    """
-    Earlier code which didn't remove consonant from beginning:
+    return result
 
-    elif words[0] in consonants: #identify if first letter is consonant
-        for i in words:
-            return word[:len(word)] + word[:len(word)] + 'ay':
-            print "ok"
-        return remove_consonants + "ay"
 
-    else:
-        return "Not an english word"
-    """
 
-print pig_latinify("book")
 
