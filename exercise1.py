@@ -12,54 +12,51 @@ __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
 
 
-def pig_latinify(word):
-    """
-    #For a given word in english, returns the word in pig latin
+
+"""
+    #For a given English word, returns the word in Pig Latin form
 
     :param : word
-    :return: new_word + 'ay' or new_word + 'yay'
+    :return: word + 'ay' or word + 'yay'
     :raises: except TypeError
 
+"""
+vowels = ("a", "e", "i", "o", "u", "A", "E", "I", "O", "U")
+
+
+def identify_vowel(word): #identify vowel in the english word
+
+    for i in range (len(word)):
+        if word[i] in vowels:
+            return i
+
+def pig_latinify(word):
+
+    letters = word.split()
+    count = 0
+    word = ""
+
+    for word in letters:
+        vowel = identify_vowel(word)
+        if vowel == -1: #first letter isn't a vowel
+            print word
+        elif vowel == 0: #first letter is vowel
+            print word + "ay"
+        else:#first letter is consonant
+            print word[vowel:] + word[:vowel] + "ay"
+
     """
-word = ""
-#vowels = ('a', 'e', 'i', 'o', 'u')
-#consonants = ('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z')
-vowels = ("aeiou")
-consonants = ("bcdfghjklmnpqrstvwxyz")
-"""
-def pig_latinify(word):
-    append_yay = "yay"
-    append_ay = "ay"
-    if word[0] in vowels:
-        return word + append_yay
-    elif word[0] in consonants:
-        return word.lstrip("bcdfghjklmnpqrstvwxyz" ) + append_ay
+    Earlier code which didn't remove consonant from beginning:
+
+    elif words[0] in consonants: #identify if first letter is consonant
+        for i in words:
+            return word[:len(word)] + word[:len(word)] + 'ay':
+            print "ok"
+        return remove_consonants + "ay"
+
     else:
-        print "Enter a new word"
+        return "Not an english word"
+    """
 
-print pig_latinify("branch")
+print pig_latinify("book")
 
-
-    #result = ""
-
-    #return result
-"""
-
-word = ""
-#vowels = ('a', 'e', 'i', 'o', 'u')
-#consonants = ('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z')
-vowels = ("aeiou")
-consonants = ("bcdfghjklmnpqrstvwxyz")
-
-def pig_latinify(word):
-    append_yay = "yay"
-    append_ay = "ay"
-    consonants_removed = word.lstrip(consonants)
-    if word[0] in vowels:
-        return word + append_yay
-    elif word[0] in consonants:
-        return consonants_removed + append_ay
-    else:
-        print "Enter a new word"
-        
-print pig_latinify("scratch")
