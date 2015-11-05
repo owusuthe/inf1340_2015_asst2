@@ -16,11 +16,25 @@ def find(input_string, substring, start, end):
     """
     Describe your function
 
-    :param :
-    :return:
+    :param : input_string (string)
+    :return: match_start(int)
     :raises:
 
     """
+search_area = input_string[start:end]
+i = 0
+
+match_start = -1
+
+while 1 < len(search_area)-(len(substring)-1):
+    letter = search_area(i)
+    if letter == substring[0]:
+        j = i + 1
+        k = 1
+while k < len(substring):
+
+
+
     return -1
 
 

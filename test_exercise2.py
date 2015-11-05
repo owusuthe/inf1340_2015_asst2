@@ -6,10 +6,6 @@ Test module for exercise2.py
 
 """
 
-__author__ = 'Susan Sim'
-__email__ = "ses@drsusansim.org"
-__copyright__ = "2015 Susan Sim"
-__license__ = "MIT License"
 
 from exercise2 import find, multi_find
 
