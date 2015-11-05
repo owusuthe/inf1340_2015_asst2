@@ -32,8 +32,12 @@ def identify_vowel(word): #identify vowel in the english word
 
 def pig_latinify(word):
 
-    if word == type(int):
-        raise TypeError('Invalid word')
+    if type(word) != str:
+        raise ValueError
+    elif not word.isalpha():
+        raise ValueError
+    elif not word.islower():
+        raise ValueError
 
     letters = word.split()
     count = 0
@@ -49,7 +53,5 @@ def pig_latinify(word):
             result = word[vowel:] + word[:vowel] + "ay"
 
     return result
-
-
 
 
