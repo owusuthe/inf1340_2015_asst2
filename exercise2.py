@@ -41,7 +41,7 @@ def multi_find(input_string, substring, start, end):
     input input_string, substring, start, and end as given in multi_find
     store returned values in the result string
     if find function does not find substring, then return the empty string
-    otherwise the indices of substring occurances are returned in the result string
+    otherwise the indices of substring occurrences are returned in the result string
     Describe your function
 
     :param :
@@ -62,5 +62,6 @@ def multi_find(input_string, substring, start, end):
             i += 1
         else:
             return result[0: len(result)-1]
+        #this last function is because the string returns a comma for the last index value as well
 
     return result
