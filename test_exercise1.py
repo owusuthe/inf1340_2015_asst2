@@ -25,6 +25,7 @@ def test_basic():
     assert pig_latinify("is") == "isyay"
     assert pig_latinify("apple") == "appleyay"
 
+
 def test_unexpected_word():
     try:
         pig_latinify(3)
@@ -33,6 +34,7 @@ def test_unexpected_word():
     else:
         assert False
 
+
 def test_multiple_word():
     try:
         pig_latinify("apple happy")
@@ -40,6 +42,7 @@ def test_multiple_word():
         assert True
     else:
         assert False
+
 
 def test_capitalize_word():
     try:

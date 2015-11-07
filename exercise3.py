@@ -37,6 +37,7 @@ def union(table1, table2):
 
     return result
 
+
 def intersection(table1, table2):
     """
     Perform the intersection set operation on tables, table1 and table2.
@@ -102,6 +103,7 @@ class MismatchedAttributesException(Exception):
     don't have the same attributes.
     """
     pass
+
 
 def check_schema(table1, table2):
     """

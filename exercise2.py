@@ -34,7 +34,6 @@ def find(input_string, substring, start, end):
             return i
         i += 1
 
-
     return -1
 
 

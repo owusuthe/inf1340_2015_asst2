@@ -12,7 +12,6 @@ __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
 
 
-
 """
     #For a given English word, returns the word in Pig Latin form
 
@@ -31,6 +30,7 @@ def identify_vowel(word):
     for i in range(len(word)):
         if word[i] in vowels:
             return i
+
 
 def pig_latinify(word):
     """

@@ -17,6 +17,7 @@ def test_find_basic():
     assert find("This is an ex-parrot", "parrot", 0, 20) == 14
     assert find("ATCGATTCCGGATCGAAATCCGGAATCGATACG", "ATCG",  0, 32) == 0
 
+
 def test_multi_find_basic():
     """
     Test multi_find function.
