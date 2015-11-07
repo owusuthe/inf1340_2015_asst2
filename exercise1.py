@@ -30,14 +30,14 @@ def identify_vowel(word): #identify vowel in the english word
         if word[i] in vowels:
             return i
 
-def pig_latinify(word):
+def pig_latinify(word): #return english word in pig latin format
 
     if type(word) != str:
         raise ValueError
     elif not word.isalpha():
         raise ValueError
     elif not word.islower():
-        raise ValueError 
+        raise ValueError
 
     letters = word.split()
     count = 0
