@@ -24,10 +24,15 @@ def union(table1, table2):
         if tables t1 and t2 don't have the same attributes
     """
     result = []
+    for row in table1[1:]:
+        if row not in result:
+            result.append(row)
+    for row in table2[1:]:
+        if row not in result:
+            result.append(row)
 
-    result
+    return [table1[0]] + result
 
-    return result
 
 
 def intersection(table1, table2):
@@ -36,10 +41,7 @@ def intersection(table1, table2):
     Returns a new table containing rows from both tables
 
     """
-    if table1[0] == table2[0]:
-        return table1[1]+ table1[2]+ table1[3] + table2[1] + table2[2] + table2[3]
-    else:
-        raise MismatchedAttributesExceptionError
+    if table1 == table2:
 
     return []
 
