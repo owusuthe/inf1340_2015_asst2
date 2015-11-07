@@ -34,8 +34,9 @@ def identify_vowel(word):
 
 def pig_latinify(word):
     """
-    First, ensures English word is a string, letters, and lower case
-    Then, checks if first letter isn't a vowel; if first letter is vowel; if first letter is consonant
+    Checks English word is a string, letters, and lower case
+    Raises ValueError if not
+    Identifies if first letter isn't a vowel; if first letter is vowel; if first letter is consonant
     Returns English word in pig latin format
     """
 

@@ -23,6 +23,7 @@ def union(table1, table2):
     :raises: MismatchedAttributesException:
         if tables t1 and t2 don't have the same attributes
     """
+    check_schema(table1, table2)
     result = []
     for row in table1[1:]:
         if row not in result:
@@ -31,11 +32,10 @@ def union(table1, table2):
         if row not in result:
             result.append(row)
 
+    #Adds the row containing the schema to the result
     result = [table1[0]] + result
 
     return result
-
-
 
 def intersection(table1, table2):
     """
@@ -43,17 +43,28 @@ def intersection(table1, table2):
     Returns a new table containing rows from both tables
 
     """
-    if table1 == table2:
+    check_schema(table1, table2)
+    result = [item for item in table1[1:] if item in table2[1:]]
 
-    return []
+    #Adds the header to the result
+    result = [table1[0]] + result
+
+    return result
 
 
 def difference(table1, table2):
     """
-    Describe your function
+    Checks if schema of tables are the same
+    Returns a new table containing rows from the first table but no in the second
 
     """
-    return []
+    check_schema(table1, table2)
+    result = [item for item in table1[1:] if item not in table2[1:]]
+
+    #Adds the row containing the schema to the result
+    result = [table1[0]] + result
+
+    return result
 
 
 #####################
@@ -82,3 +93,23 @@ class MismatchedAttributesException(Exception):
     """
     pass
 
+def check_schema(table1, table2):
+    """
+    A function that checks if schema of both tables are the same
+    Compares if number of columns aren't the same
+    Compares if name of columns aren't the same
+    Raises a MismatchedAttributesException error if not the same
+    """
+    if not table1 or not table2:
+        raise MismatchedAttributesException()
+
+    headers1 = table1[0]
+    headers2 = table2[0]
+
+    if len(headers1) != len(headers2):
+        raise MismatchedAttributesException()
+
+    l = len(headers1)
+    for i in range(l):
+        if headers1[i] != headers2[i]:
+            raise MismatchedAttributesException()
