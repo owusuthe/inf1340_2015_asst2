@@ -44,7 +44,7 @@ def intersection(table1, table2):
 
     """
     check_schema(table1, table2)
-    result = [item for item in table1[1:] if item in table2[1:]]
+    result = [i for i in table1[1:] if i in table2[1:]]
 
     #Adds the header to the result
     result = [table1[0]] + result
@@ -59,7 +59,7 @@ def difference(table1, table2):
 
     """
     check_schema(table1, table2)
-    result = [item for item in table1[1:] if item not in table2[1:]]
+    result = [i for i in table1[1:] if i not in table2[1:]]
 
     #Adds the header to the result
     result = [table1[0]] + result
