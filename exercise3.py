@@ -39,8 +39,13 @@ def union(table1, table2):
 
 def intersection(table1, table2):
     """
-    Checks if schema of tables are the same
-    Returns a new table containing rows from both tables
+    Perform the intersection set operation on tables, table1 and table2.
+
+    :param table1: a table (a List of Lists)
+    :param table2: a table (a List of Lists)
+    :return: the resulting table
+    :raises: MismatchedAttributesException:
+        if tables t1 and t2 don't have the same attributes
 
     """
     check_schema(table1, table2)
@@ -54,8 +59,13 @@ def intersection(table1, table2):
 
 def difference(table1, table2):
     """
-    Checks if schema of tables are the same
-    Returns a new table containing rows from the first table but no in the second
+    Perform the difference set operation on tables, table1 and table2.
+
+    :param table1: a table (a List of Lists)
+    :param table2: a table (a List of Lists)
+    :return: the resulting table
+    :raises: MismatchedAttributesException:
+        if tables t1 and t2 don't have the same attributes
 
     """
     check_schema(table1, table2)
@@ -95,10 +105,10 @@ class MismatchedAttributesException(Exception):
 
 def check_schema(table1, table2):
     """
-    A function that checks if schema of both tables are the same
-    Compares if number of columns aren't the same
-    Compares if name of columns aren't the same
-    Raises a MismatchedAttributesException error if not the same
+    A function that checks if schema of both tables are the same.
+    Compares if number of columns aren't the same.
+    Compares if name of columns aren't the same.
+    Raises a MismatchedAttributesException error if not the same.
     """
     if not table1 or not table2:
         raise MismatchedAttributesException()

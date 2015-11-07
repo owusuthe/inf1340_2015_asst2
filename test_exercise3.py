@@ -11,7 +11,7 @@ __email__ = "ses@drsusansim.org"
 __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
 
-from exercise3 import union, intersection, difference
+from exercise3 import union, intersection, difference, MismatchedAttributesException
 
 
 ###########
@@ -26,6 +26,34 @@ MANAGERS = [["Number", "Surname", "Age"],
             [9297, "O'Malley", 56],
             [7432, "O'Malley", 39],
             [9824, "Darkes", 38]]
+
+WORKERS = [["Number", "Surname", "Age"],
+            [9297, "O'Malley", 56],
+            [7432, "O'Malley", 39],
+            [9824, "Darkes", 38]]
+
+STUDENTS = [["Number", "Surname"],
+             [7274, "Robinson"],
+             [7432, "O'Malley"],
+             [9824, "Darkes"]]
+
+TEACHERS = [["Number", "Surname", "Age"],
+            [9297, "O'Malley", 56],
+            [7432, "O'Malley", 39],
+            [9824, "Darkes", 38]]
+
+PRINCIPLES = [["Number", "Surname", "Years"],
+            [9297, "O'Malley", 56],
+            [7432, "O'Malley", 39],
+            [9824, "Darkes", 38]]
+
+ARTISTS = [["Number", "Surname", "Age"],
+            [2899, "Richards", 46],
+            [4566, "Jackson", 19],
+            [5461, "Marks", 32]]
+
+
+
 
 
 #####################
@@ -51,6 +79,13 @@ def test_union():
 
     assert is_equal(result, union(GRADUATES, MANAGERS))
 
+    result = [["Number", "Surname", "Age"],
+            [9297, "O'Malley", 56],
+            [7432, "O'Malley", 39],
+            [9824, "Darkes", 38]]
+
+    assert is_equal(result, union(MANAGERS, WORKERS))
+
 
 def test_intersection():
     """
@@ -62,6 +97,10 @@ def test_intersection():
 
     assert is_equal(result, intersection(GRADUATES, MANAGERS))
 
+    result = [["Number", "Surname", "Age"]]
+
+    assert is_equal(result, intersection(GRADUATES, ARTISTS))
+
 
 def test_difference():
     """
@@ -72,3 +111,39 @@ def test_difference():
               [7274, "Robinson", 37]]
 
     assert is_equal(result, difference(GRADUATES, MANAGERS))
+
+    result = [['Number', 'Surname', 'Age'],
+              [2899, 'Richards', 46], [4566, 'Jackson', 19],
+              [5461, 'Marks', 32]]
+
+    assert is_equal(result, intersection(ARTISTS, GRADUATES))
+
+
+
+def test_number_columns_not_equal():
+    """
+    Test schema, if number of columns aren't the same.
+    """
+
+    try:
+        union(STUDENTS, TEACHERS)
+    except MismatchedAttributesException:
+        assert True
+    else:
+        assert False
+
+
+def test_column_names_not_equal():
+    """
+    Test schema, if names in column aren't the same.
+    """
+
+    try:
+        difference(PRINCIPLES, TEACHERS)
+    except MismatchedAttributesException:
+        assert True
+    else:
+        assert False
+
+
+
