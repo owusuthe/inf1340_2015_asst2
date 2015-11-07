@@ -32,7 +32,7 @@ def union(table1, table2):
         if row not in result:
             result.append(row)
 
-    #Adds the row containing the schema to the result
+    #Adds the header to the result
     result = [table1[0]] + result
 
     return result
@@ -61,7 +61,7 @@ def difference(table1, table2):
     check_schema(table1, table2)
     result = [item for item in table1[1:] if item not in table2[1:]]
 
-    #Adds the row containing the schema to the result
+    #Adds the header to the result
     result = [table1[0]] + result
 
     return result
