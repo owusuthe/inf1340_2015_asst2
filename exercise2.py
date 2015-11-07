@@ -14,7 +14,10 @@ __license__ = "MIT License"
 
 def find(input_string, substring, start, end):
     """
-    Describe your function
+    the index begins at start
+    it begins searching from the start and matches the length of the substring
+    once a match is found the index for the first occurrence is returned
+    the loop is incremented by one each time 
 
     :param : input_string (string)
     :return:
