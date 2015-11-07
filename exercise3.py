@@ -31,7 +31,9 @@ def union(table1, table2):
         if row not in result:
             result.append(row)
 
-    return [table1[0]] + result
+    result = [table1[0]] + result
+
+    return result
 
 
 

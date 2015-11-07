@@ -24,13 +24,20 @@ __license__ = "MIT License"
 vowels = ("a", "e", "i", "o", "u", "A", "E", "I", "O", "U")
 
 
-def identify_vowel(word): #identify vowel in the english word
-
+def identify_vowel(word):
+    """
+    Identifies vowel in the english word
+    """
     for i in range(len(word)):
         if word[i] in vowels:
             return i
 
-def pig_latinify(word): #return english word in pig latin format
+def pig_latinify(word):
+    """
+    First, ensures English word is a string, letters, and lower case
+    Then, checks if first letter isn't a vowel; if first letter is vowel; if first letter is consonant
+    Returns English word in pig latin format
+    """
 
     if type(word) != str:
         raise ValueError
@@ -45,11 +52,11 @@ def pig_latinify(word): #return english word in pig latin format
 
     for word in letters:
         vowel = identify_vowel(word)
-        if vowel == -1: #first letter isn't a vowel
+        if vowel == -1:
             result = word
-        elif vowel == 0: #first letter is vowel
+        elif vowel == 0:
             result = word + "yay"
-        else:#first letter is consonant
+        else:
             result = word[vowel:] + word[:vowel] + "ay"
 
     return result
